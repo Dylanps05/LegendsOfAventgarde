@@ -1,0 +1,124 @@
+Roadmap:
+
+FOR FINAL:
+"Look" command - tells you surrounding area
+Ability to drop items AND leave them there to pick back up Later
+At least 15 "rooms" - crypt dungeon?
+Binary save system?
+Use function - able to use it on environment, not only tomes
+
+add try/catch blocks for inputs to not crash code
+Make first biome - forest
+    -points of interest like goblin camps, caves, crypts that you can find
+    -when found, will you let travel back to them when leaving town
+Different types of spells - freeze enemy, raise/lower attack, etc.
+    -buyable books that teach you spells
+Posion and Antipoison
+    - posion deals damge at the beginning of every round, antiposion makes you immune for a combat
+potion making/alchemy?
+Set number of quests available per town?
+Quest descriptions
+Make it so some weapons can't use shields
+Flavor text when dying/killing enemies
+Make squares have weights - add a min roll and max roll ints
+    - When it rolls to generate the square, roll 1-100
+    - if it falls between the square's min and max, it is that square.
+Add more descriptions
+    - 2D array of string descriptions, to randomly choose for each area
+
+To fix:
+loading a save from combat does not reset your health
+Tweak combat values
+Dialogue options breaking when there's an empty string -- CHANGE TO NEXTINT, NOT PARSEINT STRING
+
+
+
+ADDED
+Working potions -- DONE
+Add info/tutorial to character creation -- DONE
+    - more races? -- DONE
+Working loot tables -- DONE
+Working encounter generator
+Working shops -- DONE
+Working inns -- DONE
+Quests award XP based on number of things to kill -- ADDED
+Different damage types? -- DONE
+Shops buying things for only half gold -- ADDED
+General store only buying things from backpack, smiths only buying things from inventory/armor -- ADDED
+Working towns -- should be biome specific -- DONE
+    -- only because of town descriptions
+Working quests -- DONE
+Add vulnerabilities to enemies -- DONE
+Leather shop that upgrades bags -- ADDED
+Removable armor -- ADDED
+Add check (whether bag level or comparing bag name) so only certain towns upgrade certain bags -- ADDED
+Spell tomes are items in backpack that when used, adds spell into spellbook -- ADDED
+Add in tutorial which shops buy from what -- ADDED
+
+FIXED
+Shield displaying as Empty despite being equipped -- FIXED
+If you don't make a valid action during combat, it displays an extra line -- FIXED
+Potions consuming all if they have the same name -- FIXED
+During combat, if you attack with no weapon in inventory, code crashes -- FIXED
+    - probably same with spells -- FIXED
+    - simple fix, make a loop and have a possible input to go back -- FIXED
+Taking a quest breaks as the array starts out null -- FIXED
+Fix killing an NPC does not progress quest -- FIXED
+Make it so if you kill over the needed amount, it sets back to needed amount -- FIXED
+Make damage + damage types lowercase -- FIXED
+Make it so you can't take two of the same quest -- FIXED
+fleeing from a higher level enemy seems to have a 100% chance -- FIXED
+Rework menus to all accept number inputs -- FIXED
+Enemy health does not reset on new combat -- FIXED
+Code breaking when taking quest if you don't input the correct thing -- FIXED
+Tweak taking a quest chat options -- FIXED
+Carriage breaking when typing leave -- FIXED
+Adjust shop values so shops sell at twice price instead of buying at half -- FIXED
+Add spell shop -- ADDED
+Make map a 2d array of points of interest -- DONE
+    - buyable map that shows what you've explored?
+    - The 2d coordinate in the array is POI
+        - Is each cell combat enabled?
+        - What enemies are there?
+        - General description - forest or grassy plain?
+        - Potential camps/crypts
+Sub locations (better saving?) -- DONE
+
+
+OLD STUFF
+Immediate
+Add working weapons -- DONE
+Add inventory system -- DONE
+    4 weapons + different backpacks that can carry various sizes of items?
+Add enemies -- DONE
+    Loot tables
+    Possibly an encounter generator
+
+
+Later down the line:
+Add working quests
+Adventure between different towns / regions
+Rest system
+    4 different types of beds - first restores half health, then 75%, then full, then full + temp hp
+Different starting regions
+
+BIOMES:
+Desert - Rebel's Outback (High Level)
+Town of Dragonview
+Enemies: Orc clans, hobgoblins, dragons,
+
+Plains - Shimmering Lowlands (Medium Levell)
+Town of Stormmeadow
+Enemies: Goblins, gnolls, orcs, 
+
+Forest/Coast - Sailor's Point (Medium level)
+Town of Swancoast
+Enemies: Pirates, goblins,
+
+Northern Forest - Raven's Thicket (Low Level)
+Town of Wolfrock
+Enemies: Wolves, bears
+
+Southern Forest - Redeemer's Wood (Starting Zone)
+Town of Bearpoint
+Enemies: Wolves, bears, goblins,
