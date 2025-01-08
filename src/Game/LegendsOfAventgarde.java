@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class LegendsOfAventgarde {
     public static void main(String[] args) throws Exception {
-       //itializing objects
+       //random comment
+        //itializing objects
         Scanner keyboard = new Scanner(System.in);
         Methods method = new Methods();
         Player player = new Player();
