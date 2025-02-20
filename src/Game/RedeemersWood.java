@@ -19,33 +19,39 @@ public class RedeemersWood implements Serializable {
     static Item[] goblinLootTable = {null, null, null, null, Loot.getHealthPotion(), Loot.getManaPotion(), Loot.getBronzeShield(), 
         Loot.getNecklace(), Loot.getArrow(), Loot.getBronzeDagger()};
     static Item[] bearLootTable = {null, null, Loot.getBearFur(), Loot.getBearTooth(), Loot.getBearPaw()};
-    static Item[] banditLootTable = {};
+    static Item[] banditLootTable = {null, Loot.getHealthPotion(), Loot.getManaPotion(), Loot.getBronzeAxe(), Loot.getBronzeShield(),
+        Loot.getBronzeShield(), Loot.getArrow(), null};
+    static Item[] fairyLootTable = {null};
 
     //enemies
     static Enemy wolfCub = new Enemy("Wolf Cub", 1, 8, 0, 0, 0, 2, 1, 3, 1, 2, wolfLootTable);
-    static Enemy wolf1 = new Enemy("Wolf", 3, 12, 1, 1, 1, 3, 1, 3, 2, 4, wolfLootTable);
-    static Enemy wolf2 = new Enemy("Wolf", 2, 10, 0, 1, 1, 2, 1, 2, 2, 3, wolfLootTable);
-    static Enemy giantRat = new Enemy("Giant Rat", 2, 13, 0, 2, 0, 3, 1, 3, 1, 3, giantRatLootTable);
-    static Enemy goblin = new Enemy("Goblin", 2, 10, 0, 1, 0, 4, 1, 2, 2, 3, goblinLootTable);
-    static Enemy goblin2 = new Enemy("Goblin", 3, 15, 0, 1, 0, 4, 1, 3, 2, 4, goblinLootTable);
+    static Enemy wolf1 = new Enemy("Wolf", 3, 12, 1, 1, 0, 3, 1, 3, 2, 4, wolfLootTable);
+    static Enemy wolf2 = new Enemy("Wolf", 2, 10, 1, 0, 0, 2, 1, 2, 1, 3, wolfLootTable);
+    static Enemy giantRat = new Enemy("Giant Rat", 2, 13, 0, 1, 0, 2, 1, 3, 1, 3, giantRatLootTable);
+    static Enemy goblin = new Enemy("Goblin", 1, 10, 0, 1, 0, 2, 1, 2, 1, 3, goblinLootTable);
+    static Enemy goblin2 = new Enemy("Goblin", 3, 13, 0, 1, 0, 3, 1, 3, 2, 4, goblinLootTable);
     static Enemy bear = new Enemy("Bear", 5, 20, 1, 1, 0, 4, 1, 5, 3, 8, bearLootTable);
-    //static Enemy bandit = new Enemy("Bandit", 4, 15, 1, 1, 0, 4, 1, 4, 3, 6, banditLootTable);
+    static Enemy bearCub = new Enemy("bearCub", 3, 15, 0, 1, 0, 3, 1, 3, 2, 5, bearLootTable);
+    static Enemy bandit = new Enemy("Bandit", 2, 12, 1, 1, 0, 3, 0, 2, 3, 5, banditLootTable);
+    static Enemy bandit2 = new Enemy("bandit",  1,  10, 0, 0, 0, 2, 0, 2, 2, 4, banditLootTable);
+    static Enemy fairy = new Enemy("Fairy", 1, 8, 1, 3, 0, 2, 1, 2, 1, 5, fairyLootTable);
 
     //enemy arrays
-    static Enemy[] forestEnemies = {wolfCub, wolf1, wolf2, giantRat, goblin, goblin2, bear};
+    static Enemy[] forestEnemies = {wolfCub, wolf1, wolf2, giantRat, goblin, goblin2, bear, bandit, bandit2};
     static Enemy[] wildlife = {wolfCub, wolf1, wolf2, giantRat, bear};
     static Enemy[] goblins = {goblin, goblin2};
+    static Enemy[] bandits = {bandit, bandit2};
 
     //stores
     static Item[] bpGeneralStoreItems = {Loot.getHealthPotion(), Loot.getManaPotion(), Loot.getArrow()};
-    static Item[] bpBlacksmithItems = {Loot.getBronzeShield(), Loot.getBronzeAxe(), Loot.getBroadSword(), Loot.getTwoHandedAxe(), Loot.getBronzeDagger()};
+    static Item[] bpBlacksmithItems = {Loot.getBronzeShield(), Loot.getBronzeAxe(), Loot.getBronzeSword(), Loot.getTwoHandedAxe(), Loot.getBronzeDagger()};
     static Item[] bpLeatherstoreItems = {Loot.getLeatherCoif(), Loot.getLeatherChaps(), Loot.getLeatherTunic(), Loot.getLeatherBoots(), Loot.getLeatherGloves()};
     static Item[] bpSpellShopItems = {Loot.getFireBolt(), Loot.getIceBolt(), Loot.getWaterBolt(), Loot.getWindStrike()};
 
     static Store bpGeneralStore = new Store("Hilgurd's General Store", "Handred", "General Store", bpGeneralStoreItems);
     static Store bpBlackSmith = new Store("Sam's Smithy", "Sam", "Smith", bpBlacksmithItems);
     static Store bpLeatherStore = new Store("Liandra's Leather", "Liandra", "Leatherworker", bpLeatherstoreItems, false, "Rucksack", "Bag", 1, 50);
-    static Store bpSpellShop = new Store ("Sophie's Spells", "Sohpie", "Spellshop", bpSpellShopItems);
+    static Store bpSpellShop = new Store ("Sophie's Spells", "Sophie", "Spellshop", bpSpellShopItems);
 
     static Store[] bpMarket = new Store[4];
     
@@ -67,7 +73,7 @@ public class RedeemersWood implements Serializable {
             roll = r.nextInt(0,100);
             int combatChance = roll;
         
-            Enemy[][] totalEnemies = {wildlife, goblins};
+            Enemy[][] totalEnemies = {wildlife, goblins, bandits};
             roll = r.nextInt(0, totalEnemies.length);
 
             Enemy[] enemies = totalEnemies[roll];
@@ -170,7 +176,7 @@ public class RedeemersWood implements Serializable {
             roll = r.nextInt(0,100);
             int combatChance = roll;
 
-            Enemy[][] totalEnemies = {wildlife, goblins};
+            Enemy[][] totalEnemies = {forestEnemies, wildlife, goblins, bandits};
             roll = r.nextInt(0, totalEnemies.length);
 
             Enemy[] enemies = totalEnemies[roll];
@@ -305,8 +311,10 @@ public class RedeemersWood implements Serializable {
                     }
                     else if (inputString.equalsIgnoreCase("investigate")) {
                         int roll = r.nextInt(0,squares[x][y].items.length);
-                        if (squares[x][y].items[roll] == null)
+                        if (squares[x][y].items[roll] == null) {
                             System.out.println(squares[x][y].investDesc);
+                            System.out.println("What next? Leave, menu, or investigate further?");
+                        }
                         else {
                             player.lootItem(player, keyboard, squares[x][y].items, roll);
                             squares[x][y].items[roll] = null;
@@ -327,6 +335,25 @@ public class RedeemersWood implements Serializable {
 
     private static void rwEnterPOI(Player player, Scanner keyboard) {
 
+            //Goblin Camp
+            if(player.getPlayerx() == 0 && player.getPlayery() == 0) {
+                System.out.println("""
+                    You come across a wall of wooden logs, carved with spikes on the top.
+                    Smoke billows out from behind the walls, rising into the sky.
+                    Behind the gates, you can hear sounds of what appears to be goblins rustling about.
+                    You muster your breath, open the gates, and head inside.
+                        """);
+            }
+
+            //Wolf Den
+            if(player.getPlayerx() == 6 && player.getPlayery() == 6) {
+                
+            }
+
+            //Crypt
+            if(player.getPlayerx() == 5 && player.getPlayery() == 2) {
+                
+            }
     }
 }
     

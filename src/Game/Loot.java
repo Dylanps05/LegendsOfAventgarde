@@ -59,8 +59,8 @@ public class Loot implements Serializable {
 
 
     //weapons
-    public static Weapon getBroadSword() {
-        return new Weapon("Broadsword", 10, "slashing", 1, 2, 0, 4);
+    public static Weapon getBronzeSword() {
+        return new Weapon("Bronze Sword", 10, "slashing", 1, 2, 0, 4);
     }
     public static Weapon getTwoHandedAxe() {
         return new Weapon("Two-Handed Axe", 10, "slashing", 0, 3, 0, 3);
@@ -76,6 +76,9 @@ public class Loot implements Serializable {
     }
     public static Weapon getIronDagger() {
         return new Weapon("Iron Dagger", 25, "piercing", 2, 3, 3, 4);
+    }
+    public static Weapon getIronSword() {
+        return new Weapon("Iron Sword", 30, "slashing", 1, 4, 1, 4);
     }
 
     //ammo
@@ -121,6 +124,9 @@ public class Loot implements Serializable {
     }
     public static SpellTome getWindStrike() {
         return new SpellTome("Tome of Wind Strike", 25, "Tome", SpellList.windstrike);
+    }
+    public static SpellTome getEarthbolt() {
+        return new SpellTome("Tome of Earthbolt", 30, "Tome", SpellList.earthbolt);
     }
 
     //potions

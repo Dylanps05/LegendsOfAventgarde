@@ -25,12 +25,15 @@ Make squares have weights - add a min roll and max roll ints
     - if it falls between the square's min and max, it is that square.
 Add more descriptions
     - 2D array of string descriptions, to randomly choose for each area
+Monster Encyclopedia
 
 To fix:
 loading a save from combat does not reset your health
+Looting an arrow ontop of a stack of arrow replaces the stack
+Ammo number in backpack does not go down when shot
 Tweak combat values
 Dialogue options breaking when there's an empty string -- CHANGE TO NEXTINT, NOT PARSEINT STRING
-
+Change do while loops to try catch blocks
 
 
 ADDED

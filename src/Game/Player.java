@@ -194,7 +194,7 @@ public class Player implements Serializable {
         inputString = keyboard.nextLine();
         do {
             if (inputString.equalsIgnoreCase("fighter")) {
-                player.inventory[0] = Loot.getBroadSword();
+                player.inventory[0] = Loot.getBronzeSword();
                 player.armor[5] = Loot.getWoodenShield();
                 player.playerClass = "fighter";
                 invalid = false;
@@ -873,6 +873,12 @@ public class Player implements Serializable {
 
                     inputString = keyboard.nextLine();
                     int slot = Integer.parseInt(inputString);
+
+                    if(player.backpack[slot].getType().equals("Ammo")) {
+                        if(player.backpack[slot].getType().equals(table[roll].getType())) {
+                            ((Ammo)player.backpack[slot]).setCount(((Ammo)player.backpack[slot]).getCount() - 1);
+                        }
+                    }
 
                     player.backpack[(slot - 1)] = table[roll];    
                     System.out.println(table[roll].getName() + " added to backpack!");

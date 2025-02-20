@@ -151,15 +151,17 @@ public class Methods implements Serializable {
                         damage = ((Weapon)player.inventory[weapon]).rollDamage() + player.playerStr;
                         swing = ((Weapon)player.inventory[weapon]).rollAttack() + player.playerAtt;
                         if(((Weapon)player.inventory[weapon]).getWeaponType().equals("Ranged")){
-                            if(player.inventory[weapon].getType().equals("Ammo")) {
+                            // for (int i = 0; i < player.backpack.length; i++) {
+                            //     if (player.backpack(i).)
+                            // }
+                            if(player.backpack[weapon].getType().equals("Ammo")) {
                                 damage = ((Weapon)player.inventory[weapon]).rollDamage() + player.playerRanged;
-                                int ammoCount = ((Ammo)player.inventory[weapon]).getCount();
-                                if(ammoCount <= 0) {//WILL STILL TAKE DAMAGE -- FIX THIS
+                                if (((Ammo)player.backpack[weapon]).getCount() <= 0) {
                                     System.out.println("You have no ammo!");
                                     continue;
                                 }
                                 else
-                                    ((Ammo)player.inventory[weapon]).setCount(ammoCount - 1);
+                                    ((Ammo)player.backpack[weapon]).setCount(((Ammo)player.backpack[weapon]).getCount() - 1);
                             }
                         }
                         if(swing > enemy.defence) {
